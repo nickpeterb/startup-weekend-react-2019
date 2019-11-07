@@ -1,25 +1,24 @@
 import React from 'react';
-import logo from './logo.svg';
+//import {Route, HashRouter} from 'react-router-dom';
 import './App.css';
+import UpdateComponent from './components/UpdateComponent';
+import { UpdatesBoardComponent } from './components/UpdatesBoardComponent';
+import { LoginComponent } from './components/LoginComponent';
+import { RegisterComponent } from './components/RegisterComponent';
+import MentorsComponent from './components/MentorsComponent';
+import {LoginContainer} from './components/LoginContainer.js';
+import {AppContainer} from './components/AppContainer.js';
+import Cookies from 'react-cookies';
+
+const isLoggedIn = Cookies.load("code");
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  console.log(Cookies.load('code'));
+  return(
+  <div id="container">
+    <h1>StartUP Weekend</h1>
+    {!!isLoggedIn ? <AppContainer/> : <LoginContainer/>}
+  </div>
   );
 }
 
